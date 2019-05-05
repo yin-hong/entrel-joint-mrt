@@ -41,7 +41,10 @@ class EntModel(nn.Module):
 
         self.encoder = nn.LSTM(word_char_emb_size + self.parse_lstm_size,
                                self.hidden_size // 2,
-                               num_layers=1)
+                               num_layers=1,
+                               batch_first=True,
+                               dropout=dropout,
+                               bidirectional=bidirectional)
 
 
     def parse_chunk_vocab(self, chunk_vocab):
